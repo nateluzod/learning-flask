@@ -5,8 +5,21 @@
   </title>
 </head>
 <body>
-  <h1>Hello, {{ user.nickname }}!</h1>
+  <div>Microblog: <a href="/index">Home</a></div>
+  <hr>
 
+  {# Flash Messages #}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {# Content #}
   {% block content %}{% endblock %}
 </body>
 </html>

@@ -6,8 +6,19 @@
     {{ form.hidden_tag() }}
     <ul>
       <li>
-        <label>Please enter your OpenID:</label>
+        <label>Please enter your OpenID, or select one of the providers below:</label>
         {{ form.openid(size=80) }}
+        {% for error in form.openid.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+        <ul>
+        {% for provider in providers %}
+          <li>
+            <a href="javascript:set_openid('{{ provider.url }}', '{{ provider.name }}');">{{ provider.name }}</a>
+          </li>
+        {% endfor %}
+        </ul>
       </li>
       <li>
         <label>Remember Me</label>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+  <h1>Hello, {{ user.nickname }}!</h1>
   {% for post in posts %}
     <article>
       <h2>{{ post.author.nickname }}</h2>
